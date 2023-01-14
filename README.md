@@ -1,4 +1,4 @@
-# Error404
+# ERROR404
 
 # Virtual Mouse
 This project aims to develop a virtual mouse using deep learning techniques. The virtual mouse can be controlled using hand gestures, which are captured by a webcam and processed by a deep neural network to determine the cursor's movement.
