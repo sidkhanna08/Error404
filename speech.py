@@ -58,9 +58,15 @@ def run_siri():
             info = wikipedia.summary(command,2)
             talk(info)
             pywhatkit.search(command)
-        # elif 'open' in command:
-        #     command= command.replace('open',"")
-        #     subprocess.Popen('C)
+        elif 'open calculator' in command:
+            command= command.replace('open',"")
+            subprocess.Popen("C:\Windows\System32\calc.exe")
+        elif 'open notepad' in command:
+            command=command.replace('open notepad and type',"")
+            # subprocess.Popen("C:\Windows\System32\notepad.exe")
+            with open('new.txt','w') as g:
+                g.write(command)
+
         else :
             talk('Please say the command again')
 
