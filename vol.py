@@ -1,4 +1,4 @@
-import cv2 as cv
+import cv2
 import time
 import numpy as np
 import module as md
@@ -9,7 +9,7 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 wCam,hCam = 1280 , 720
 
-cap = cv.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
 cap.set(4, hCam)
 
@@ -33,7 +33,7 @@ maxVol = volRange[1]
 
 while True:
     success,frm = cap.read()
-    frm = cv.flip(frm, 1)
+    frm = cv2.flip(frm, 1)
     frm = detector.findHands(frm)
     lmList = detector.findPosition(frm)
     if len(lmList)!=0:
@@ -41,10 +41,10 @@ while True:
         x2, y2 = lmList[8][1], lmList[8][2]
         cx, cy = (x1+x2)//2, (y1+y2)//2
 
-        cv.circle(frm,(x1,y1),10,(255,0,255),cv.FILLED)
-        cv.circle(frm, (x2, y2), 10, (255, 0, 255), cv.FILLED)
-        cv.line(frm,(x1,y1),(x2,y2),(255,0,255),3)
-        cv.circle(frm, (cx, cy), 10, (255, 0, 255), cv.FILLED)
+        cv2.circle(frm,(x1,y1),10,(255,0,255),cv2.FILLED)
+        cv2.circle(frm, (x2, y2), 10, (255, 0, 255), cv2.FILLED)
+        cv2.line(frm,(x1,y1),(x2,y2),(255,0,255),3)
+        cv2.circle(frm, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
         length = math.hypot(x2 - x1, y2 - y1)
 
 
@@ -54,9 +54,9 @@ while True:
 
 
         if length <= 50:
-            cv.circle(frm, (cx, cy), 10, (0, 255, 0), cv.FILLED)
+            cv2.circle(frm, (cx, cy), 10, (0, 255, 0), cv2.FILLED)
 
 
 
-        cv.imshow("Image", frm)
-        cv.waitKey(1)
+        cv2.imshow("Image", frm)
+        cv2.waitKey(1)
